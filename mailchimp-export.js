@@ -3,7 +3,7 @@ const path = require('path')
 const https = require('https')
 
 const apiKeyPath = path.join(__dirname, 'mailchimp-api-key.json')
-const baseDir = __dirname
+const baseDir = path.join(__dirname, 'export');
 
 function readApiKey()
 {
@@ -17,7 +17,7 @@ function readApiKey()
 
 function apiRequest({ apiKey, datacenter }, endpoint)
 {
-	console.log(`🌐 API GET ${endpoint}`)
+//	console.log(`🌐 API GET ${endpoint}`)
 	return new Promise((resolve, reject) =>
 	{
 		const options = {
@@ -57,7 +57,7 @@ function ensureDir(p)
 {
 	if(!fs.existsSync(p)) {
 		fs.mkdirSync(p, { recursive: true })
-		console.log(`✔ Created directory: ${p}`)
+//		console.log(`📁 Created directory: ${p}`)
 	}
 }
 
@@ -70,7 +70,7 @@ async function writeJSON(folder, name, data)
 
 async function exportCampaigns(auth)
 {
-	console.log('🔄 Exporting campaigns...')
+	console.log('\n🔄 Exporting campaigns...')
 	const dir = path.join(baseDir, 'campaigns')
 	ensureDir(dir)
 
@@ -106,7 +106,7 @@ async function exportCampaigns(auth)
 
 async function exportTemplates(auth)
 {
-	console.log('🔄 Exporting templates...')
+	console.log('\n🔄 Exporting templates...')
 	const dir = path.join(baseDir, 'templates')
 	ensureDir(dir)
 
@@ -128,7 +128,7 @@ async function exportTemplates(auth)
 
 async function exportAutomations(auth)
 {
-	console.log('🔄 Exporting automations...')
+	console.log('\n🔄 Exporting automations...')
 	const dir = path.join(baseDir, 'automations')
 	ensureDir(dir)
 
@@ -149,7 +149,7 @@ async function exportAutomations(auth)
 
 async function exportAudienceMetadata(auth)
 {
-	console.log('🔄 Exporting audience metadata...')
+	console.log('\n🔄 Exporting audience metadata...')
 	const dir = path.join(baseDir, 'audience_metadata')
 	ensureDir(dir)
 
@@ -173,7 +173,7 @@ async function exportAudienceMetadata(auth)
 
 async function exportAudienceMembers(auth)
 {
-	console.log('🔄 Exporting audience members...')
+	console.log('\n🔄 Exporting audience members...')
 	const dir = path.join(baseDir, 'audience_members')
 	ensureDir(dir)
 
@@ -201,7 +201,7 @@ async function exportAudienceMembers(auth)
 
 async function exportLandingPages(auth)
 {
-	console.log('🔄 Exporting landing pages...')
+	console.log('\n🔄 Exporting landing pages...')
 	const dir = path.join(baseDir, 'landing_pages')
 	ensureDir(dir)
 
@@ -222,7 +222,7 @@ async function exportLandingPages(auth)
 
 async function exportFileManager(auth)
 {
-	console.log('🔄 Exporting file manager...')
+	console.log('\n🔄 Exporting file manager...')
 	const dir = path.join(baseDir, 'assets')
 	ensureDir(dir)
 
@@ -234,7 +234,7 @@ async function exportFileManager(auth)
 
 async function exportSurveys(auth)
 {
-	console.log('🔄 Exporting surveys...')
+	console.log('\n🔄 Exporting surveys...')
 	const dir = path.join(baseDir, 'surveys')
 	ensureDir(dir)
 
@@ -246,7 +246,7 @@ async function exportSurveys(auth)
 
 async function exportEcommerce(auth)
 {
-	console.log('🔄 Exporting ecommerce...')
+	console.log('\n🔄 Exporting ecommerce...')
 	const dir = path.join(baseDir, 'ecommerce/stores')
 	ensureDir(dir)
 
